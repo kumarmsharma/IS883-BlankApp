@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("🎈 Rae's Korean Ramen Shop")
+st.title("🎈 New Application for IS883 Class")
 st.write(
-    "To eat and overload, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+    "Lear more @ [docs.streamlit.io](https://docs.streamlit.io/)."
 )
