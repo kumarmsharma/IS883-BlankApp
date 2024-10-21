@@ -12,18 +12,14 @@ num_tokens = st.number_input("How many tokens should the response be?", min_valu
 
 if st.button("Generate Response"):
     if user_prompt:
-        # Tokenize the prompt
         inputs = tokenizer.encode(user_prompt, return_tensors="pt")
 
-        # Generate response with low creativity (low temperature)
         output_low = model.generate(inputs, max_length=num_tokens, do_sample=True, temperature=0.2)
         response_low = tokenizer.decode(output_low[0], skip_special_tokens=True)
 
-        # Generate response with high creativity (high temperature)
         output_high = model.generate(inputs, max_length=num_tokens, do_sample=True, temperature=0.9)
         response_high = tokenizer.decode(output_high[0], skip_special_tokens=True)
 
-        # Display the results
         st.write("Low Creativity Response:")
         st.write(response_low)
         
