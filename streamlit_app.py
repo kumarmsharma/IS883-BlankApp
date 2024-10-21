@@ -1,20 +1,15 @@
 import streamlit as st
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
-# Load GPT-2 model and tokenizer
 model = GPT2LMHeadModel.from_pretrained("gpt2")
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 
-# App title
 st.title("Simple GPT-2 Text Generator")
 
-# Input from user for the prompt
 user_prompt = st.text_input("Enter your prompt here:")
 
-# Input for number of tokens (length of the response)
 num_tokens = st.number_input("How many tokens should the response be?", min_value=5, max_value=100, value=50)
 
-# Button to trigger the generation of responses
 if st.button("Generate Response"):
     if user_prompt:
         # Tokenize the prompt
@@ -29,10 +24,10 @@ if st.button("Generate Response"):
         response_high = tokenizer.decode(output_high[0], skip_special_tokens=True)
 
         # Display the results
-        st.write("Low Creativity Response (Temperature 0.2):")
+        st.write("Low Creativity Response:")
         st.write(response_low)
         
-        st.write("High Creativity Response (Temperature 0.9):")
+        st.write("High Creativity Response:")
         st.write(response_high)
     else:
         st.write("Please enter a prompt!")
